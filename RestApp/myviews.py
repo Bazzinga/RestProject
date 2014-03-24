@@ -26,7 +26,7 @@ class Register(APIView):
     def post(self, request, format=None):
         requestData=request.DATA
         print requestData
-        requestData=json.loads(json.dumps(requestData))
+       # requestData=json.loads(json.dumps(requestData))
         try:
              serializer = LoginSerializer(requestData)
         except Exception as ex:
@@ -34,6 +34,7 @@ class Register(APIView):
         if serializer.is_valid:
             jsone = JSONRenderer().render(serializer.data)
             loginModel=serializer.restore_object(serializer.data,Login())
+            #serializer.save()
             username=requestData['username']
             password=requestData['password']
             if(myredis.get(username)==None):

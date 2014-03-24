@@ -34,7 +34,7 @@ def login(request):
         # body=request.body
         # bodyData=eval(body)
         requestData=request.DATA
-        requestData=json.loads(json.dumps(requestData))
+       # requestData=json.loads(json.dumps(requestData))
         try:
              serializer = LoginSerializer(requestData)
         except Exception as ex:
